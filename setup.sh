@@ -1,2 +1,2 @@
 #!/bin/bash
-python ./osSpecificSetup.py
+python ./scripts/osSpecificSetup.py
