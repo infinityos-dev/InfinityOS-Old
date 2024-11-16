@@ -14,5 +14,4 @@ Install bochsbios and bochs-x
 Install vgabios
 >[!IMPORTANT]
 >bochsbios and bochs-x are available on https://github.com/bochs-emu/Bochs/tree/master
-
 >vgabios is available on https://github.com/bochs-emu/VGABIOS
