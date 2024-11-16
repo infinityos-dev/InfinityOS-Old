@@ -12,7 +12,7 @@ Run setup_pacman.sh
 Install bochsbios and bochs-x
 
 Install vgabios
+>[!IMPORTANT]
+>bochsbios and bochs-x are available on https://github.com/bochs-emu/Bochs/tree/master
 
-bochsbios and bochs-x are available on https://github.com/bochs-emu/Bochs/tree/master
-
-vgabios is available on https://github.com/bochs-emu/VGABIOS
+>vgabios is available on https://github.com/bochs-emu/VGABIOS
