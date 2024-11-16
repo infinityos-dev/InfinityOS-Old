@@ -127,7 +127,6 @@ wait_key_and_reboot:
 ;   - dh: head
 ;
 lba_to_chs:
-
     push ax
     push dx
     xor dx, dx                          ; dx = 0
@@ -157,7 +156,6 @@ lba_to_chs:
 ;   - es:bx: memory address where to store read data
 ;
 disk_read:
-
     push ax                             ; save registers we will modify
     push bx
     push cx
