@@ -11,5 +11,5 @@ HexOS is a lightweight easy to use operating made to limit e-waste.
 | nasm       | Assembler        |
 | qemu       | Virtualization   |
 | bochs      | Debugging        |
-| mtools     | Embedding kernel |
+| mtools     | Embedding files  |
 | dosfstools | File system      |
