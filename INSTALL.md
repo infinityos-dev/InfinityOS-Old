@@ -1,7 +1,6 @@
 # Platforms
 You should be able to build InfinityOS successfully on the following platforms:
 - Ubuntu
-- Arch Linux (Setup is supported, but hasn't been testet)
 - Windows (Using WSL or Cygwin)
 
 ## Linux
