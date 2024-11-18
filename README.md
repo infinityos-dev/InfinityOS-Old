@@ -14,7 +14,7 @@ HInfinityOS is a lightweight easy to use operating made to limit e-waste.
 | mtools     | Embedding files  |
 | dosfstools | File system      |
 | gcc        | C/C++ compiler   |
-| Python3    | Setup scripts    |
+| python3    | Setup scripts    |
 
 ### Python
 | Name       | Usage                               |
