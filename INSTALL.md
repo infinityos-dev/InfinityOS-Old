@@ -1,6 +1,7 @@
 # Platforms
 You should be able to build HexOS successfully on the following platforms:
-- Linux
+- Ubuntu
+- Arch Linux (Setup is supported, but hasn't been testet)
 - Windows (Using WSL or Cygwin)
 
 ## Linux
