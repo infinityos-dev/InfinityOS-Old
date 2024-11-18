@@ -14,7 +14,7 @@ cd ./HexOS
 ```
 3. Setting the environmet up
 ```bash
-./setup.sh
+bash ./setup.sh
 ```
 4. Building the HexOS
 ```
