@@ -1,17 +1,21 @@
 # Platforms
 You should be able to build HexOS successfully on the following platforms:
-- Linux Ubuntu
+- Ubuntu
 
-## Ubuntu Linux
+## Ubuntu
 1. Getting the source:
 ```bash
 git clone https://github.com/Hexuro/HexOS
 ```
-2. Setting the environmet up
+2. Changing the directory
+```bash
+cd ./HexOS
+```
+3. Setting the environmet up
 ```bash
 ./scripts/setup_debian.sh
 ```
-3. Building the HexOS
+4. Building the HexOS
 ```
 make
 ```
