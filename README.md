@@ -13,3 +13,4 @@ HexOS is a lightweight easy to use operating made to limit e-waste.
 | bochs      | Debugging        |
 | mtools     | Embedding files  |
 | dosfstools | File system      |
+| gcc        | C/C++ compiler   |
