@@ -29,16 +29,16 @@ install_keyboard_handler:
     pop ax      ; Restore the AX register
     ret
 
-;restore_keyboard_handler:
-;    push ax     ; Save the current state of the AX register
-;    cli        ; Disable interrupts to prevent the current handler from being called while we change it
-;    mov ax, 0x09 ; Set the interrupt vector for the keyboard
-;    mov es, ax
-;    mov di, [keyboard_handler_backup] ; Get the original handler
-;    mov [es:0x00], di
-;    sti        ; Enable interrupts again
-;    pop ax      ; Restore the AX register
-;    ret
+restore_keyboard_handler:
+    push ax     ; Save the current state of the AX register
+    cli        ; Disable interrupts to prevent the current handler from being called while we change it
+    mov ax, 0x09 ; Set the interrupt vector for the keyboard
+    mov es, ax
+    mov di, [keyboard_handler_backup] ; Get the original handler
+    mov [es:0x00], di
+    sti        ; Enable interrupts again
+    pop ax      ; Restore the AX register
+    ret
 
 keyboard_handler:
     push ax     ; Save the current state of the AX register
