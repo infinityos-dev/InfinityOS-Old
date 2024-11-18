@@ -14,11 +14,17 @@ start:
     hlt
 
 install_keyboard_handler:
-    push ax
+    push ax 
     cli
-    mov ax, 0x09
+    mov ax, 0x09 
     mov es, ax
-    mov di, 
+    mov di, [es:0x00]
+    mov [keyboard_handler_backup], di
+    mov di, keyboard_handler
+    mov [es:0x00], di
+    sti
+    pop ax
+    ret
 
 keyboard_handler:
     push ax
