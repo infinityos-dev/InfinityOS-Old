@@ -13,6 +13,20 @@ start:
     cli
     hlt
 
+install_keyboard_handler:
+    push ax
+    cli
+    mov ax, 0x09
+    mov es, ax
+    mov di, 
+
+keyboard_handler:
+    push ax
+    in al, 0x60
+    mov ah, 0x0e
+    int 0x10
+    pop ax
+    iret
 
 ;
 ; Prints a string to the screen
