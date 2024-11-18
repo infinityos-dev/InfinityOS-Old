@@ -12,4 +12,4 @@ elif osname == supportedos[2]:
     print("your os is supported")
     subprocess.run("./setup_apt.sh")
 else:
-    print("if your os uses apt or pacman run ./script/setup_pacman.sh or ./script/setup_apt.sh")
+    print("if your os uses apt or pacman run ./script/setup_pacman.sh for pacman or ./script/setup_apt.sh for apt")
