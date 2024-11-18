@@ -13,7 +13,7 @@ cd ./HexOS
 ```
 3. Setting the environmet up
 ```bash
-./scripts/setup_debian.sh
+./setup.sh
 ```
 4. Building the HexOS
 ```
