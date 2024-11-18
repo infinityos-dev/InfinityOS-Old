@@ -14,6 +14,8 @@ HexOS is a lightweight easy to use operating made to limit e-waste.
 | mtools     | Embedding files  |
 | dosfstools | File system      |
 | gcc        | C/C++ compiler   |
+| Python3    | Setup scripts    |
+| distro     | Setup scripts (installed with pip)  |
 
 ## Contributers
 <a href="https://github.com/Hexuro/HexOS/graphs/contributors">
