@@ -6,9 +6,9 @@ TOOLS_DIR=tools
 BUILD_DIR=build
 TEST_DIR=test
 
-.PHONY: all floppy_image kernel bootloader clean always tools_fat
+.PHONY: all floppy_image kernel bootloader clean always tools_fat iso
 
-all: floppy_image tools_fat
+all: floppy_image tools_fat iso
 
 #
 # Floppy image
@@ -45,6 +45,14 @@ tools_fat: $(BUILD_DIR)/tools/fat
 $(BUILD_DIR)/tools/fat: always $(TOOLS_DIR)/fat/fat.c
 	mkdir -p $(BUILD_DIR)/tools
 	$(CC) -g -o $(BUILD_DIR)/tools/fat $(TOOLS_DIR)/fat/fat.c
+
+#
+# Create ISO image
+#
+iso: $(BUILD_DIR)/mybootcd.iso
+
+$(BUILD_DIR)/mybootcd.iso: $(BUILD_DIR)/main_floppy.img
+	mkisofs -o $(BUILD_DIR)/mybootcd.iso -V InfinityOS -b main_floppy.img $(BUILD_DIR)
 
 #
 # Always
