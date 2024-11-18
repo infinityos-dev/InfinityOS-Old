@@ -1,8 +1,9 @@
 # Platforms
 You should be able to build HexOS successfully on the following platforms:
-- Ubuntu
+- Linux
+- Windows (Using WSL or Cygwin)
 
-## Ubuntu
+## Linux
 1. Getting the source:
 ```bash
 git clone https://github.com/Hexuro/HexOS
