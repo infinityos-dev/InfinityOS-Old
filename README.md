@@ -1,9 +1,9 @@
-# HexOS
+# InfinityOS
 
 >[!IMPORTANT]
->HexOS is still in very early development and is currently not ready for normal usage.
+>InfinityOS is still in very early development and is currently not ready for normal usage.
 
-HexOS is a lightweight easy to use operating made to limit e-waste.
+HInfinityOS is a lightweight easy to use operating made to limit e-waste.
 
 ## Dependencies
 | Name       | Usage            |
@@ -16,6 +16,6 @@ HexOS is a lightweight easy to use operating made to limit e-waste.
 | gcc        | C/C++ compiler   |
 
 ## Contributers
-<a href="https://github.com/Hexuro/HexOS/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Hexuro/HexOS" width="100" height="45" />
+<a href="https://github.com/Hexuro/InfinityOS/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Hexuro/InfinityOS" width="100" height="45" />
 </a>

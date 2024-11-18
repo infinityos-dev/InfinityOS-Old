@@ -1,21 +1,21 @@
 # Platforms
-You should be able to build HexOS successfully on the following platforms:
+You should be able to build InfinityOS successfully on the following platforms:
 - Ubuntu
 
 ## Ubuntu
 1. Getting the source:
 ```bash
-git clone https://github.com/Hexuro/HexOS
+git clone https://github.com/Hexuro/InfinityOS
 ```
 2. Changing the directory
 ```bash
-cd ./HexOS
+cd ./InfinityOS
 ```
 3. Setting the environmet up
 ```bash
 ./setup.sh
 ```
-4. Building the HexOS
+4. Building the InfinityOS
 ```
 make
 ```
