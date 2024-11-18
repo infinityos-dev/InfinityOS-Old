@@ -21,4 +21,4 @@ bash ./setup.sh
 ```
 make
 ```
-Now you can use `./scripts/run.sh` to open the disk image in Qemu and use `./scripts/debug.sh` to debug the disk image on bochs.
+Now you can use `bash ./scripts/run.sh` to open the disk image in Qemu and use `bash ./scripts/debug.sh` to debug the disk image on bochs.
