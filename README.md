@@ -22,7 +22,7 @@ HInfinityOS is a lightweight easy to use operating made to limit e-waste.
 | distro     | Setup scripts (installed with pip)  |
 
 ## Installation
-Read the installation guide https://github.com/TheDouck/InfinityOS/blob/main/INSTALL.md
+Read the [installation guide](https://github.com/TheDouck/InfinityOS/blob/main/INSTALL.md)
 
 ## Contributers
 <a href="https://github.com/Hexuro/InfinityOS/graphs/contributors">
