@@ -13,40 +13,6 @@ start:
     cli
     hlt
 
-data:
-    keyboard_handler_backup db 0
-
-install_keyboard_handler:
-    push ax     ; Save the current state of the AX register
-    cli        ; Disable interrupts to prevent the current handler from being called while we change it
-    mov ax, 0x09 ; Set the interrupt vector for the keyboard
-    mov es, ax
-    mov di, [es:0x00] ; Get the current handler
-    mov [keyboard_handler_backup], di ; Save the current handler
-    mov di, keyboard_handler ; Set the new handler to our interrupt handler
-    mov [es:0x00], di
-    sti        ; Enable interrupts again
-    pop ax      ; Restore the AX register
-    ret
-
-restore_keyboard_handler:
-    push ax     ; Save the current state of the AX register
-    cli        ; Disable interrupts to prevent the current handler from being called while we change it
-    mov ax, 0x09 ; Set the interrupt vector for the keyboard
-    mov es, ax
-    mov di, [keyboard_handler_backup] ; Get the original handler
-    mov [es:0x00], di
-    sti        ; Enable interrupts again
-    pop ax      ; Restore the AX register
-    ret
-
-keyboard_handler:
-    push ax     ; Save the current state of the AX register
-    in al, 0x1e ; Read the scancode from the keyboard
-    mov ah, 0x0e ; Set the teletype output function in the BIOS
-    int 0x10   ; Call the BIOS to print the character
-    pop ax      ; Restore the AX register
-    iret       ; Return from the interrupt handler
 
 ;
 ; Prints a string to the screen
