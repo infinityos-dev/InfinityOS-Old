@@ -62,7 +62,7 @@ $(BUILD_DIR)/tools/fat: always $(TOOLS_DIR)/fat/fat.c
 iso: $(BUILD_DIR)/mybootcd.iso
 
 $(BUILD_DIR)/mybootcd.iso: $(BUILD_DIR)/main_floppy.img
-	mkisofs -o $(BUILD_DIR)/mybootcd.iso -V InfinityOS -b main_floppy.img $(BUILD_DIR)
+	mkisofs -o $(BUILD_DIR)/main_bootcd.iso -V InfinityOS -b main_floppy.img $(BUILD_DIR)
 
 #
 # Always
