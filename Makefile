@@ -8,9 +8,9 @@ TOOLS_DIR=tools
 BUILD_DIR=build
 TEST_DIR=test
 
-.PHONY: all floppy_image kernel bootloader clean always tools_fat iso
+.PHONY: all floppy_image kernel bootloader clean always tools_fat iso run
 
-all: floppy_image tools_fat iso
+all: floppy_image tools_fat
 
 #
 # Floppy image
@@ -78,3 +78,9 @@ clean:
 	$(MAKE) -C $(SRC_DIR)/bootloader/stage2 BUILD_DIR=$(abspath $(BUILD_DIR)) clean
 	$(MAKE) -C $(SRC_DIR)/kernel BUILD_DIR=$(abspath $(BUILD_DIR)) clean
 	rm -rf $(BUILD_DIR)/*
+
+#
+# Run
+#
+run:
+	qemu-system-i386 -fda $(BUILD_DIR)/main_floppy.img
