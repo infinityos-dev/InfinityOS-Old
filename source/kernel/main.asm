@@ -26,12 +26,12 @@ puts:
     push bx
 
 .loop:
-    lodsb               ; loads next character in al
-    or al, al           ; verify if next character is null?
+    lodsb               ; Load next character into al
+    or al, al           ; Check if next character is null (end of string)?
     jz .done
 
-    mov ah, 0x0E        ; call bios interrupt
-    mov bh, 0           ; set page number to 0
+    mov ah, 0x0E        ; BIOS interrupt to display character
+    mov bh, 0           ; Set page number to 0
     int 0x10
 
     jmp .loop
