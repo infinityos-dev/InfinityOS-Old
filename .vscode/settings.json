@@ -3,6 +3,7 @@
     "files.associations": {
         "stdint.h": "c",
         "stdio.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "x86.h": "c",
     }
 }
