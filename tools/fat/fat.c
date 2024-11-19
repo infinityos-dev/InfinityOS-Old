@@ -63,14 +63,14 @@ bool readBootSector(FILE* disk)
 bool readSectors(FILE* disk, uint32_t lba, uint32_t count, void* bufferOut)
 {
     bool ok = true;
-    ok = ok && (fseek(disk, lba * g_BootSector.BytesPerSector, SEEK_SET) == 0);
+    ok = ok && (fseek(disk, (long) lba * g_BootSector.BytesPerSector, SEEK_SET) == 0);
     ok = ok && (fread(bufferOut, g_BootSector.BytesPerSector, count, disk) == count);
     return ok;
 }
 
 bool readFat(FILE* disk)
 {
-    g_Fat = (uint8_t*) malloc(g_BootSector.SectorsPerFat * g_BootSector.BytesPerSector);
+    g_Fat = (uint8_t*) malloc((long) g_BootSector.SectorsPerFat * g_BootSector.BytesPerSector);
     return readSectors(disk, g_BootSector.ReservedSectors, g_BootSector.SectorsPerFat, g_Fat);
 }
 
@@ -83,7 +83,7 @@ bool readRootDirectory(FILE* disk)
         sectors++;
 
     g_RootDirectoryEnd = lba + sectors;
-    g_RootDirectory = (DirectoryEntry*) malloc(sectors * g_BootSector.BytesPerSector);
+    g_RootDirectory = (DirectoryEntry*) malloc((long)sectors * g_BootSector.BytesPerSector);
     return readSectors(disk, lba, sectors, g_RootDirectory);
 }
 
