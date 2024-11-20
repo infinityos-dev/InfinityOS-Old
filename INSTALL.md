@@ -12,10 +12,7 @@ git clone https://github.com/Hexuro/InfinityOS
 ```bash
 cd ./InfinityOS
 ```
-3. Setting the environmet up
-```bash
-bash ./setup.sh
-```
+3. Installing the individual required tools
 4. Building the InfinityOS
 ```
 make
