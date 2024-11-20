@@ -14,10 +14,10 @@ entry:
         XOR   EAX, EAX
         MOV   AX, DS
         SHL   EAX, 4
-        ADD   EAX, ''GDT''
+        ADD   EAX, 'GDT'
         MOV   [gdtr + 2], eax
-        MOV  EAX, ''GDT_end''
-        SUB   EAX, ''GDT''
+        MOV  EAX, 'GDT_end'
+        SUB   EAX, 'GDT'
         MOV   [gdtr], AX
         LGDT  [gdtr]
         RET
