@@ -86,3 +86,9 @@ clean:
 #
 run:
 	qemu-system-i386 -fda $(BUILD_DIR)/main_floppy.img
+
+#
+# Debug (bochs)
+#
+debug:
+	bochs -f bochs_config
