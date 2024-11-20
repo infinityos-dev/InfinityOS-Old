@@ -5,6 +5,7 @@
 
 void far* g_data = (void far*)0x00500200;
 
+
 void _cdecl cstart_(uint16_t bootDrive)
 {
     DISK disk;
@@ -52,4 +53,5 @@ void _cdecl cstart_(uint16_t bootDrive)
 
 end:
     for (;;);
+    
 }
