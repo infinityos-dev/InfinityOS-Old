@@ -6,6 +6,7 @@
         "stdlib.h": "c",
         "x86.h": "c",
         "stdbool.h": "c",
-        "ctype.h": "c"
+        "ctype.h": "c",
+        "fat.h": "c"
     }
 }
