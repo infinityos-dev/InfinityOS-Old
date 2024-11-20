@@ -1,4 +1,4 @@
-#include "stdint.h"
+#include "stdbool.h"
 #include "stdio.h"
 
 void _cdecl cstart_(uint16_t bootDrive)
