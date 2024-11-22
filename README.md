@@ -16,11 +16,6 @@ InfinityOS is a lightweight easy to use operating made to limit e-waste.
 | gcc        | C/C++ compiler   |
 | python3    | Setup scripts    |
 
-### Python
-| Name       | Usage                               |
-| ---------- | ----------------------------------- |
-| distro     | Setup scripts (installed with pip)  |
-
 ### External
 | Name       | Usage                                                                      |
 | ---------- | -------------------------------------------------------------------------- |
