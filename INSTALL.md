@@ -18,7 +18,7 @@ cd ./InfinityOS
 ```
 4. Running the file returned by setup.sh
 ```
-./scripts/xxx
+./scripts/(the script returned by setup.sh)
 ```
 5. Building the InfinityOS
 ```
