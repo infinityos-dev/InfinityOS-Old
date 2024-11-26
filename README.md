@@ -16,11 +16,6 @@ InfinityOS is a lightweight easy to use operating made to limit e-waste.
 | gcc        | C/C++ compiler   |
 | python3    | Setup scripts    |
 
-### External
-| Name       | Usage                                                                      |
-| ---------- | -------------------------------------------------------------------------- |
-| Watcom     | C/C++ compiler for ops (should be placed in `/usr/bin/watcom` with 64-bit) |
-
 ## Installation
 Read the [installation guide](https://github.com/TheDouck/InfinityOS/blob/main/INSTALL.md)
 
