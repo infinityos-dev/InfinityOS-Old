@@ -13,8 +13,18 @@ git clone https://github.com/Hexuro/InfinityOS
 cd ./InfinityOS
 ```
 3. Installing the individual required tools
+Debian-based:
+```bash
+curl -L https://raw.githubusercontent.com/notbonzo-com/osdev-utils/main/toolchain.sh -o /tmp/toolchain.sh
+chmod +x /tmp/toolchain.sh
+/tmp/toolchain.sh # The important part is to choose `i686-elf` as the architecture.
+```
+Arch-based:
+```bash
+make toolchain
+```
 4. Building the InfinityOS
 ```
 make
 ```
-Now you can use `bash ./scripts/run.sh` to open the disk image in Qemu and use `bash ./scripts/debug.sh` to debug the disk image on bochs.
+Now you can use `bash ./scripts/run.sh`/`make run` to open the disk image in Qemu and use `bash ./scripts/debug.sh` to debug the disk image on bochs.

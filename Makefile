@@ -63,10 +63,9 @@ always:
 # Clean
 #
 clean:
-	@$(MAKE) -C source/bootloader/stage1 BUILD_DIR=$(abspath $(BUILD_DIR)) clean
-	@$(MAKE) -C source/bootloader
-	r/stage2 BUILD_DIR=$(abspath $(BUILD_DIR)) clean
-	@$(MAKE) -C source/kernel BUILD_DIR=$(abspath $(BUILD_DIR)) clean
+	@$(MAKE) -C $(SOURCE_DIR)/bootloader/stage1 BUILD_DIR=$(abspath $(BUILD_DIR)) clean
+	@$(MAKE) -C $(SOURCE_DIR)/bootloader/stage2 BUILD_DIR=$(abspath $(BUILD_DIR)) clean
+	@$(MAKE) -C $(SOURCE_DIR)/kernel BUILD_DIR=$(abspath $(BUILD_DIR)) clean
 	@rm -rf $(BUILD_DIR)/*
 
 #

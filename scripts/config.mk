@@ -19,6 +19,7 @@ export TARGET_LIBS =
 
 export BUILD_DIR = $(abspath build)
 export TEST_DIR = test
+export SOURCE_DIR = source
 
 BINUTILS_VERSION = 2.37
 BINUTILS_URL = https://ftp.gnu.org/gnu/binutils/binutils-$(BINUTILS_VERSION).tar.xz
