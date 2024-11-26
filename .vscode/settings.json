@@ -7,6 +7,7 @@
         "x86.h": "c",
         "stdbool.h": "c",
         "ctype.h": "c",
-        "fat.h": "c"
+        "fat.h": "c",
+        "disk.h": "c"
     }
 }
