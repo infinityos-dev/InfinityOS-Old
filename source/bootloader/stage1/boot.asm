@@ -33,21 +33,26 @@ ebr_volume_id:              db 12h, 34h, 56h, 78h   ; serial number, value doesn
 ebr_volume_label:           db 'INFINITY OS'        ; 11 bytes, padded with spaces
 ebr_system_id:              db 'FAT12   '           ; 8 bytes
 
+;
+; Code goes here
+;
 
 start:
     ; setup data segments
-    mov ax, 0                   ; can't set ds/es directly
+    mov ax, 0           ; can't set ds/es directly
     mov ds, ax
     mov es, ax
     
     ; setup stack
     mov ss, ax
-    mov sp, 0x7C00
+    mov sp, 0x7C00              ; stack grows downwards from where we are loaded in memory
 
-    ; some BIOSes might start us at 07C0:0000 instead of 0000:7C00, make sure we are in the expected location
+    ; some BIOSes might start us at 07C0:0000 instead of 0000:7C00, make sure we are in the
+    ; expected location
     push es
     push word .after
     retf
+
 .after:
 
     ; read something from floppy disk
@@ -58,19 +63,20 @@ start:
     mov si, msg_loading
     call puts
 
-    ; read drive parameters (sectors per track and head count), instead of relying on data on formatted disk
+    ; read drive parameters (sectors per track and head count),
+    ; instead of relying on data on formatted disk
     push es
     mov ah, 08h
     int 13h
     jc floppy_error
     pop es
 
-    and cl, 0x3F ; remove top 2 bits
+    and cl, 0x3F                        ; remove top 2 bits
     xor ch, ch
-    mov [bdb_sectors_per_track], cx ; sector count
-    inc dh
-    mov [bdb_heads], dh ; head count
+    mov [bdb_sectors_per_track], cx     ; sector count
 
+    inc dh
+    mov [bdb_heads], dh                 ; head count
 
     ; compute LBA of root directory = reserved + fats * sectors_per_fat
     ; note: this section can be hardcoded
@@ -94,10 +100,10 @@ start:
 .root_dir_after:
 
     ; read root directory
-    mov cl, al                  ; cl = number of sectors to read = size of root directory
-    pop ax                      ; ax = LBA of root directory
-    mov dl, [ebr_drive_number]  ; dl = drive number (we saved it previously)
-    mov bx, buffer              ; es:bx = buffer
+    mov cl, al                          ; cl = number of sectors to read = size of root directory
+    pop ax                              ; ax = LBA of root directory
+    mov dl, [ebr_drive_number]          ; dl = drive number (we saved it previously)
+    mov bx, buffer                      ; es:bx = buffer
     call disk_read
 
     ; search for kernel.bin
@@ -106,7 +112,7 @@ start:
 
 .search_kernel:
     mov si, file_stage2_bin
-    mov cx, 11              ; compare up to 11 characters
+    mov cx, 11                          ; compare up to 11 characters
     push di
     repe cmpsb
     pop di
@@ -121,6 +127,7 @@ start:
     jmp kernel_not_found_error
 
 .found_kernel:
+
     ; di should have the address to the entry
     mov ax, [di + 26]                   ; first logical cluster field (offset 26)
     mov [stage2_cluster], ax
@@ -133,17 +140,18 @@ start:
     call disk_read
 
     ; read kernel and process FAT chain
-    mov bx, KERNEL_LOAD_SEGMENT
+    mov bx, STAGE2_LOAD_SEGMENT
     mov es, bx
-    mov bx, KERNEL_LOAD_OFFSET
+    mov bx, STAGE2_LOAD_OFFSET
 
 .load_kernel_loop:
+    
     ; Read next cluster
     mov ax, [stage2_cluster]
     
     ; not nice :( hardcoded value
-    add ax, 31   ; first cluster = (stage2_cluster - 2) * sectors_per_cluster + start_sector
-                ; start sector = reserved + fats + root directory size = 1 + 18 + 134 = 33
+    add ax, 31                          ; first cluster = (stage2_cluster - 2) * sectors_per_cluster + start_sector
+                                        ; start sector = reserved + fats + root directory size = 1 + 18 + 134 = 33
     mov cl, 1
     mov dl, [ebr_drive_number]
     call disk_read
@@ -172,25 +180,26 @@ start:
     and ax, 0x0FFF
 
 .next_cluster_after:
-    cmp ax, 0x0FF8      ; end of chain
+    cmp ax, 0x0FF8                      ; end of chain
     jae .read_finish
 
     mov [stage2_cluster], ax
     jmp .load_kernel_loop
 
-.read_finish: 
+.read_finish:
+    
     ; jump to our kernel
     mov dl, [ebr_drive_number]          ; boot device in dl
 
-    mov ax, KERNEL_LOAD_SEGMENT         ; set segment registers
+    mov ax, STAGE2_LOAD_SEGMENT         ; set segment registers
     mov ds, ax
     mov es, ax
 
-    jmp KERNEL_LOAD_SEGMENT:KERNEL_LOAD_OFFSET
+    jmp STAGE2_LOAD_SEGMENT:STAGE2_LOAD_OFFSET
 
-    jmp wait_key_and_reboot     ; should never happen
+    jmp wait_key_and_reboot             ; should never happen
 
-    cli
+    cli                                 ; disable interrupts, this way CPU can't get out of "halt" state
     hlt
 
 
@@ -246,7 +255,6 @@ puts:
     pop si    
     ret
 
-
 ;
 ; Disk routines
 ;
@@ -260,14 +268,19 @@ puts:
 ;   - cx [bits 6-15]: cylinder
 ;   - dh: head
 ;
+
 lba_to_chs:
+
     push ax
     push dx
+
     xor dx, dx                          ; dx = 0
     div word [bdb_sectors_per_track]    ; ax = LBA / SectorsPerTrack
                                         ; dx = LBA % SectorsPerTrack
+
     inc dx                              ; dx = (LBA % SectorsPerTrack + 1) = sector
     mov cx, dx                          ; cx = sector
+
     xor dx, dx                          ; dx = 0
     div word [bdb_heads]                ; ax = (LBA / SectorsPerTrack) / Heads = cylinder
                                         ; dx = (LBA / SectorsPerTrack) % Heads = head
@@ -275,6 +288,7 @@ lba_to_chs:
     mov ch, al                          ; ch = cylinder (lower 8 bits)
     shl ah, 6
     or cl, ah                           ; put upper 2 bits of cylinder in CL
+
     pop ax
     mov dl, al                          ; restore DL
     pop ax
@@ -290,6 +304,7 @@ lba_to_chs:
 ;   - es:bx: memory address where to store read data
 ;
 disk_read:
+
     push ax                             ; save registers we will modify
     push bx
     push cx
@@ -351,10 +366,10 @@ msg_loading:            db 'Loading...', ENDL, 0
 msg_read_failed:        db 'Read from disk failed!', ENDL, 0
 msg_stage2_not_found:   db 'STAGE2.BIN file not found!', ENDL, 0
 file_stage2_bin:        db 'STAGE2  BIN'
-stage2_cluster          dw 0
+stage2_cluster:         dw 0
 
-KERNEL_LOAD_SEGMENT     equ 0x2000
-KERNEL_LOAD_OFFSET      equ 0
+STAGE2_LOAD_SEGMENT     equ 0x0
+STAGE2_LOAD_OFFSET      equ 0x500
 
 
 times 510-($-$$) db 0
