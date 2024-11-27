@@ -9,7 +9,8 @@
         "ctype.h": "c",
         "fat.h": "c",
         "disk.h": "c",
-        "stddef.h": "c"
+        "stddef.h": "c",
+        "irq.h": "c"
     },
     "makefile.launchConfigurations": [
         {
