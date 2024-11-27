@@ -9,5 +9,13 @@
         "ctype.h": "c",
         "fat.h": "c",
         "disk.h": "c",
-    }
+        "stddef.h": "c"
+    },
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/viktorpopp/InfinityOS/build",
+            "binaryArgs": []
+        }
+    ],
+    "makefile.makefilePath": "${workspaceFolder}/Makefile"
 }
