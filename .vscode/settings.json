@@ -8,6 +8,6 @@
         "stdbool.h": "c",
         "ctype.h": "c",
         "fat.h": "c",
-        "disk.h": "c"
+        "disk.h": "c",
     }
 }
