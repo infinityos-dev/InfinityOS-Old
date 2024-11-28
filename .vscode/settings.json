@@ -10,7 +10,9 @@
         "fat.h": "c",
         "disk.h": "c",
         "stddef.h": "c",
-        "irq.h": "c"
+        "irq.h": "c",
+        "idt.h": "c",
+        "i686.h": "c"
     },
     "makefile.launchConfigurations": [
         {
