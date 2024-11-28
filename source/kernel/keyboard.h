@@ -1,4 +1,17 @@
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+
+typedef struct {
+    bool shift_is_down;
+    bool caps_locked;
+} PS2KeyboardProps;
+
+PS2KeyboardProps g_PS2KeyboardProps;
+
 void PS2_PrintScancodeToAscii(uint8_t scancode) {
+    bool is_uppercase = g_PS2KeyboardProps.caps_locked ^ g_PS2KeyboardProps.shift_is_down;
+
     switch (scancode) {
         case 0x0:
             printf("ERROR");
@@ -49,34 +62,34 @@ void PS2_PrintScancodeToAscii(uint8_t scancode) {
             printf("Tab");
             break;
         case 0x10:
-            printf("Q");
+            printf(is_uppercase ? "Q" : "q");
             break;
         case 0x11:
-            printf("W");
+            printf(is_uppercase ? "W" : "w");
             break;
         case 0x12:
-            printf("E");
+            printf(is_uppercase ? "E" : "e");
             break;
         case 0x13:
-            printf("R");
+            printf(is_uppercase ? "R" : "r");
             break;
         case 0x14:
-            printf("T");
+            printf(is_uppercase ? "T" : "t");
             break;
         case 0x15:
-            printf("Y");
+            printf(is_uppercase ? "Y" : "y");
             break;
         case 0x16:
-            printf("U");
+            printf(is_uppercase ? "U" : "u");
             break;
         case 0x17:
-            printf("I");
+            printf(is_uppercase ? "I" : "i");
             break;
         case 0x18:
-            printf("O");
+            printf(is_uppercase ? "O" : "o");
             break;
         case 0x19:
-            printf("P");
+            printf(is_uppercase ? "P" : "p");
             break;
         case 0x1A:
             printf("[");
@@ -85,37 +98,37 @@ void PS2_PrintScancodeToAscii(uint8_t scancode) {
             printf("]");
             break;
         case 0x1C:
-            printf("Enter");
+            printf("\n");
             break;
         case 0x1D:
             printf("Left Ctrl");
             break;
         case 0x1E:
-            printf("A");
+            printf(is_uppercase ? "A" : "a");
             break;
         case 0x1F:
-            printf("S");
+            printf(is_uppercase ? "S" : "s");
             break;
         case 0x20:
-            printf("D");
+            printf(is_uppercase ? "D" : "d");
             break;
         case 0x21:
-            printf("F");
+            printf(is_uppercase ? "F" : "f");
             break;
         case 0x22:
-            printf("G");
+            printf(is_uppercase ? "G" : "g");
             break;
         case 0x23:
-            printf("H");
+            printf(is_uppercase ? "H" : "h");
             break;
         case 0x24:
-            printf("J");
+            printf(is_uppercase ? "J" : "j");
             break;
         case 0x25:
-            printf("K");
+            printf(is_uppercase ? "K" : "k");
             break;
         case 0x26:
-            printf("L");
+            printf(is_uppercase ? "L" : "l");
             break;
         case 0x27:
             printf(";");
@@ -126,32 +139,32 @@ void PS2_PrintScancodeToAscii(uint8_t scancode) {
         case 0x29:
             printf("`");
             break;
-        case 0x2A:
-            printf("Left Shift");
+        case 0x2A: 
+            g_PS2KeyboardProps.shift_is_down = true;
             break;
         case 0x2B:
             printf("\\");
             break;
         case 0x2C:
-            printf("Z");
+            printf(is_uppercase ? "Z" : "z");
             break;
         case 0x2D:
-            printf("X");
+            printf(is_uppercase ? "X" : "x");
             break;
         case 0x2E:
-            printf("C");
+            printf(is_uppercase ? "C" : "c");
             break;
         case 0x2F:
-            printf("V");
+            printf(is_uppercase ? "V" : "v");
             break;
         case 0x30:
-            printf("B");
+            printf(is_uppercase ? "B" : "b");
             break;
         case 0x31:
-            printf("N");
+            printf(is_uppercase ? "N" : "n");
             break;
         case 0x32:
-            printf("M");
+            printf(is_uppercase ? "M" : "m");
             break;
         case 0x33:
             printf(",");
@@ -163,7 +176,7 @@ void PS2_PrintScancodeToAscii(uint8_t scancode) {
             printf("/");
             break;
         case 0x36:
-            printf("Right Shift");
+            g_PS2KeyboardProps.shift_is_down = true;
             break;
         case 0x37:
             printf("Keypad *");
@@ -172,22 +185,16 @@ void PS2_PrintScancodeToAscii(uint8_t scancode) {
             printf("Left Alt");
             break;
         case 0x39:
-            printf("Space");
+            printf(" ");
+            break;
+        case 0xAA: 
+            g_PS2KeyboardProps.shift_is_down = false;
+            break;
+        case 0xBA:
+            g_PS2KeyboardProps.shift_is_down = false;
             break;
         default:
-            if (scancode <= 0x7F)
-            {
-                printf("Unknown key down");
-            }
-            else if (scancode <= 0x39 + 0x80)
-            {
-                printf("Key up ");
-                printf("%d", scancode - 0x80);
-            }
-            else
-            {
-                printf("Unknown key up");
-            }
+            printf("");
             break;
     }
 }
