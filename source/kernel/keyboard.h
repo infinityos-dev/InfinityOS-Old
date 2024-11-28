@@ -175,12 +175,17 @@ void PS2_PrintScancodeToAscii(uint8_t scancode) {
             printf("Space");
             break;
         default:
-            if (scancode <= 0x7F) {
+            if (scancode <= 0x7F)
+            {
                 printf("Unknown key down");
-            } else if (scancode <= 0x39 + 0x80) {
+            }
+            else if (scancode <= 0x39 + 0x80)
+            {
                 printf("Key up ");
                 printf("%d", scancode - 0x80);
-            } else {
+            }
+            else
+            {
                 printf("Unknown key up");
             }
             break;
