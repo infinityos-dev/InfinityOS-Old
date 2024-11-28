@@ -8,6 +8,17 @@
         "stdbool.h": "c",
         "ctype.h": "c",
         "fat.h": "c",
-        "disk.h": "c"
-    }
+        "disk.h": "c",
+        "stddef.h": "c",
+        "irq.h": "c",
+        "idt.h": "c",
+        "i686.h": "c"
+    },
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/viktorpopp/InfinityOS/build",
+            "binaryArgs": []
+        }
+    ],
+    "makefile.makefilePath": "${workspaceFolder}/Makefile"
 }
