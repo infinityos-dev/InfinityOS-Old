@@ -92,6 +92,22 @@ void putc(char c)
             g_ScreenX = 0;
             break;
 
+        case '\b':
+            if (g_ScreenX > 0)
+            {
+                g_ScreenX--;
+                putchr(g_ScreenX, g_ScreenY, ' ');
+                putcolor(g_ScreenX, g_ScreenY, DEFAULT_COLOR);
+            }
+            else if (g_ScreenY > 0)
+            {
+                g_ScreenX = SCREEN_WIDTH - 1;
+                g_ScreenY--;
+                putchr(g_ScreenX, g_ScreenY, ' ');
+                putcolor(g_ScreenX, g_ScreenY, DEFAULT_COLOR);
+            }
+            break;
+
         default:
             putchr(g_ScreenX, g_ScreenY, c);
             g_ScreenX++;

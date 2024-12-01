@@ -49,7 +49,7 @@ void PS2_PrintScancodeToAscii(uint8_t scancode) {
             printf("=");
             break;
         case 0xE:
-            printf("Backspace");
+            printf("\b");
             break;
         case 0xF:
             printf("Tab");
