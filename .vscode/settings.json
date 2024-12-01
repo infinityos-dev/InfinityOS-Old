@@ -15,6 +15,7 @@
         "i686.h": "c",
         "keyboard.h": "c",
         "bochs_config": "yaml",
+        "bochs_config_disk": "yaml",
         "pic.h": "c",
         "memory.h": "c",
         "i8259.h": "c",
