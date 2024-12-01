@@ -13,7 +13,8 @@
         "irq.h": "c",
         "idt.h": "c",
         "i686.h": "c",
-        "keyboard.h": "c"
+        "keyboard.h": "c",
+        "bochs_config": "yaml"
     },
     "makefile.launchConfigurations": [
         {
