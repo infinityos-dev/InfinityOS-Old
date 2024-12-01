@@ -12,7 +12,8 @@
         "stddef.h": "c",
         "irq.h": "c",
         "idt.h": "c",
-        "i686.h": "c"
+        "i686.h": "c",
+        "keyboard.h": "c"
     },
     "makefile.launchConfigurations": [
         {
