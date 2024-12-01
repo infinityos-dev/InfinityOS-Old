@@ -14,7 +14,11 @@
         "idt.h": "c",
         "i686.h": "c",
         "keyboard.h": "c",
-        "bochs_config": "yaml"
+        "bochs_config": "yaml",
+        "pic.h": "c",
+        "memory.h": "c",
+        "i8259.h": "c",
+        "io.h": "c"
     },
     "makefile.launchConfigurations": [
         {
