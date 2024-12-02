@@ -76,4 +76,4 @@ clean:
 # Run
 #
 run: floppy_image
-	@qemu-system-i386 -hda build/main_disk.raw
+	@qemu-system-i386 -hda build/main_floppy.img
