@@ -2,3 +2,4 @@
 [Tt]oolchain/
 bx_enh_dbg.ini
 *.err
+__pycache__/
