@@ -2,4 +2,7 @@
 [Tt]oolchain/
 bx_enh_dbg.ini
 .sconsign.dblite
+.venv/
+venv/
+__pycache__/
 *.err
