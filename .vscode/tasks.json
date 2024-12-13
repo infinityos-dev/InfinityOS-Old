@@ -2,9 +2,9 @@
     "version": "2.0.0",
     "tasks": [
       {
-        "label": "make run",
+        "label": "scons run",
         "type": "shell",
-        "command": "make run",
+        "command": "scons run",
         "group": {
           "kind": "build",
           "isDefault": true

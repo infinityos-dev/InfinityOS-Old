@@ -1,4 +1,14 @@
-[Bb]uild/
 [Tt]oolchain/
 bx_enh_dbg.ini
+.sconsign.dblite
+.venv/
+venv/
+__pycache__/
 *.err
+
+# Build files
+*.o
+*.bin
+*.map
+*.img
+image/tmp_mount_**
