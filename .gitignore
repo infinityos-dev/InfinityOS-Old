@@ -10,3 +10,5 @@ __pycache__/
 *.o
 *.bin
 *.map
+*.img
+image/tmp_mount_**

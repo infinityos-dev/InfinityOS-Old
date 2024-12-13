@@ -1,10 +1,7 @@
-print('BUILDING BOOTLOADER STAGE 1...')
-
 from SCons.Environment import Environment
 
 from scripts.utility import GlobRecursive
 
-print('BUILDING BOOTLOADER STAGE 1...')
 
 Import('TARGET_ENVIRONMENT')
 TARGET_ENVIRONMENT: Environment

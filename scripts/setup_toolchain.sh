@@ -29,6 +29,7 @@ if [ -z "$TOOLCHAINS_DIR" ]; then
     exit 1
 fi
 
+mkdir -p "$TOOLCHAINS_DIR"
 pushd "$TOOLCHAINS_DIR"
 
 if [ "$OPERATION" = "build"]; then

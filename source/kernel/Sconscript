@@ -1,5 +1,3 @@
-print('BUILDING KERNEL...')
-
 import os
 
 from SCons.Environment import Environment
@@ -38,13 +36,13 @@ if crtn_index is not None:
     obj_crtn = objects.pop(crtn_index if crti_index is None else crtn_index - 1)
 
 # Construct the objects list, including crti.o and crtn.o if they exist
-objects = [obj_crti] if obj_crti else []
-objects.append(os.path.join(env["TOOLCHAIN_LIBGCC"], 'crtbegin.o'))
-objects.extend(objects)
-objects.append(os.path.join(env["TOOLCHAIN_LIBGCC"], 'crtend.o'))
+final_objects = [obj_crti] if obj_crti else []
+final_objects.append(os.path.join(env["TOOLCHAIN_LIBGCC"], 'crtbegin.o'))
+final_objects.extend(objects)  # Use the original objects here, not doubled
+final_objects.append(os.path.join(env["TOOLCHAIN_LIBGCC"], 'crtend.o'))
 if obj_crtn:
-    objects.append(obj_crtn)
+    final_objects.append(obj_crtn)
 
-kernel = env.Program('kernel.bin', objects)
+kernel = env.Program('kernel.bin', final_objects)
 
 Export('kernel')
