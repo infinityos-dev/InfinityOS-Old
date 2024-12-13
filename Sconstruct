@@ -5,7 +5,7 @@ from SCons.Node import *
 from scripts.phony_targets import PhonyTargets
 from scripts.utility import ParseSize
 
-VARS = Variables('scripts/config.py', ARGUMENTS)
+VARS = Variables('scripts/config.py', ARGUMENTS)  # type: ignore
 VARS.AddVariables(
     EnumVariable("config",
                  help="Build configuration",
@@ -123,27 +123,28 @@ TARGET_ENVIRONMENT.Append(
 
 TARGET_ENVIRONMENT['ENV']['PATH'] += os.pathsep + str(toolchainBin)
 
-Help(VARS.GenerateHelpText(HOST_ENVIRONMENT))
-Export('HOST_ENVIRONMENT')
-Export('TARGET_ENVIRONMENT')
+Help(VARS.GenerateHelpText(HOST_ENVIRONMENT)) # type: ignore
+Export('HOST_ENVIRONMENT') # type: ignore
+Export('TARGET_ENVIRONMENT') # type: ignore
 
 variantDir = 'build/{0}_{1}'.format(TARGET_ENVIRONMENT['arch'], TARGET_ENVIRONMENT['config'])
 variantDirStage1 = variantDir + '/stage1_{0}'.format(TARGET_ENVIRONMENT['imageFS'])
 
-SConscript('source/bootloader/stage1/SConscript', variant_dir=variantDirStage1, duplicate=0)
-SConscript('source/bootloader/stage2/SConscript', variant_dir=variantDir + '/stage2', duplicate=0)
-SConscript('source/kernel/SConscript', variant_dir=variantDir + '/kernel', duplicate=0)
-SConscript('image/SConscript', variant_dir=variantDir, duplicate=0)
+SConscript('source/bootloader/stage1/Sconscript') # type: ignore
+SConscript('source/bootloader/stage1/Sconscript', duplicate=0) # type: ignore
+SConscript('source/bootloader/stage2/Sconscript', duplicate=0) # type: ignore
+SConscript('source/kernel/Sconscript', duplicate=0) # type: ignore
+SConscript('image/Sconscript', duplicate=0) # type: ignore
 
-Import('image')
+Import('image') # type: ignore
 
 # Phony targets
 PhonyTargets(HOST_ENVIRONMENT, 
-             run=['./scripts/run.sh', HOST_ENVIRONMENT['imageType'], image[0].path],
-             debug=['./scripts/debug.sh', HOST_ENVIRONMENT['imageType'], image[0].path],
-             bochs=['./scripts/bochs.sh', HOST_ENVIRONMENT['imageType'], image[0].path],
+             run=['./scripts/run.sh', HOST_ENVIRONMENT['imageType'], image[0].path], # type: ignore
+             debug=['./scripts/debug.sh', HOST_ENVIRONMENT['imageType'], image[0].path], # type: ignore
+             bochs=['./scripts/bochs.sh', HOST_ENVIRONMENT['imageType'], image[0].path], # type: ignore
              toolchain=['./scripts/setup_toolchain.sh', HOST_ENVIRONMENT['toolchain']])
 
-Depends('run', image)
-Depends('debug', image)
-Depends('bochs', image)
+Depends('run', image) # type: ignore
+Depends('debug', image) # type: ignore
+Depends('bochs', image) # type: ignore

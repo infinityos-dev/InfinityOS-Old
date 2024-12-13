@@ -1,0 +1,50 @@
+print('BUILDING KERNEL...')
+
+import os
+
+from SCons.Environment import Environment
+from scripts.utility import GlobRecursive, FindIndex, IsFileName
+
+
+Import('TARGET_ENVIRONMENT')
+TARGET_ENVIRONMENT: Environment
+
+env = TARGET_ENVIRONMENT.Clone()
+env.Append(
+    LINKFLAGS = [
+        '-Wl,-T', env.File('linker.ld').srcnode().path,
+        '-Wl,-Map=' + env.File('kernel.map').path
+    ],
+    CPATH = [ env.Dir('.').srcnode() ],
+    CPPPATH = [ env.Dir('.').srcnode() ],
+    ASFLAGS = [ '-I', env.Dir('.').srcnode(), '-f', 'elf' ]
+)
+
+sources = GlobRecursive(env, '*.c') + \
+          GlobRecursive(env, '*.cpp') + \
+          GlobRecursive(env, '*.asm')
+
+objects = env.Object(sources)
+
+# Safely remove crti.o and crtn.o if they exist
+obj_crti = None
+obj_crtn = None
+crti_index = FindIndex(objects, lambda item: IsFileName(item, 'crti.o'))
+crtn_index = FindIndex(objects, lambda item: IsFileName(item, 'crtn.o'))
+
+if crti_index is not None:
+    obj_crti = objects.pop(crti_index)
+if crtn_index is not None:
+    obj_crtn = objects.pop(crtn_index if crti_index is None else crtn_index - 1)
+
+# Construct the objects list, including crti.o and crtn.o if they exist
+objects = [obj_crti] if obj_crti else []
+objects.append(os.path.join(env["TOOLCHAIN_LIBGCC"], 'crtbegin.o'))
+objects.extend(objects)
+objects.append(os.path.join(env["TOOLCHAIN_LIBGCC"], 'crtend.o'))
+if obj_crtn:
+    objects.append(obj_crtn)
+
+kernel = env.Program('kernel.bin', objects)
+
+Export('kernel')

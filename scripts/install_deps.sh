@@ -11,6 +11,7 @@ DEPS_DEBIAN=(
     qemu-system-x86 
     python3-pip 
     python3-scons
+    python3-sh
 )
 
 DEPS_FEDORA=(

@@ -12,7 +12,7 @@ from SCons.Action import Action
 from SCons.Builder import Builder
 from SCons.Environment import Environment
 
-from build_scripts.utility import FindIndex, GlobRecursive, IsFileName
+from scripts.utility import FindIndex, GlobRecursive, IsFileName
 
 Import('stage1')
 Import('stage2')

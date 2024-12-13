@@ -1,7 +1,8 @@
-import os
+print('BUILDING BOOTLOADER STAGE 2...')
 
+import os
 from SCons.Environment import Environment
-from build_scripts.utility import GlobRecursive, FindIndex, IsFileName
+from scripts.utility import GlobRecursive, FindIndex, IsFileName
 
 Import('TARGET_ENVIRONMENT')
 TARGET_ENVIRONMENT: Environment
