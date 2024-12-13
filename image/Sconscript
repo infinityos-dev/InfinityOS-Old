@@ -254,10 +254,15 @@ def build_disk(image, stage1, stage2, kernel, files, env):
     finally:
         print("> cleaning up...")
         try:
-            unmount_fs(tempdir, mount_token)
-        except:
-            pass
-        os.rmdir(tempdir)
+            unmount_fs(tempdir, mount_method, mount_token)
+        except Exception as e:
+            print(f"Error during unmounting: {e}")
+        finally:
+            try:
+                os.rmdir(tempdir)
+            except Exception as e:
+                print(f"Error removing tempdir: {e}")
+
 
 
 def build_image(target, source, env):
