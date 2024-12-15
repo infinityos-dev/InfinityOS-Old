@@ -15,6 +15,8 @@ InfinityOS is a lightweight easy to use operating made to limit e-waste.
 | dosfstools | File system      |
 | gcc        | C/C++ compiler   |
 | python3    | Setup scripts    |
+| python3-sh | Setup scripts    |
+| scons      | Setup scripts    |
 
 ## Installation
 Read the [installation guide](https://github.com/TheDouck/InfinityOS/blob/main/INSTALL.md)
