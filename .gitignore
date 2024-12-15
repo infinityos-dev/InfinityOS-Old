@@ -10,5 +10,5 @@ __pycache__/
 *.o
 *.bin
 *.map
-source/bootloader/stage1/stage1.map
+*.img
 image/tmp_mount_**
