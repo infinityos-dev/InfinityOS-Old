@@ -1,1 +1,4 @@
 * @viktorpopp
+scripts/osSpecificSetup.py @thedouck
+scripts/setup_apt @thedouck
+scripts/setup_pacman @thedouck
