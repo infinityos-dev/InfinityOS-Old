@@ -1,4 +1,16 @@
-* @viktorpopp
+# Viktor Popp
+.vscode/* @viktorpopp
+source/* @viktorpopp
+test/* @viktorpopp
+tools/* @viktorpopp
+scripts/config.* @viktorpopp
+scripts/debug.* @viktorpopp
+scripts/generate_isrs.sh @viktorpopp
+scripts/run.sh @viktorpopp
+scripts/toolchain.* @viktorpopp
+
+
+# The Douck
 scripts/osSpecificSetup.py @thedouck
 scripts/setup_apt @thedouck
 scripts/setup_pacman @thedouck
