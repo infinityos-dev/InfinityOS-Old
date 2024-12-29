@@ -1,13 +1,13 @@
 # Viktor Popp
 .vscode/* @viktorpopp
-source/* @viktorpopp
-test/* @viktorpopp
-tools/* @viktorpopp
-scripts/config.* @viktorpopp
-scripts/debug.* @viktorpopp
+source/** @viktorpopp
+test/** @viktorpopp
+tools/** @viktorpopp
+scripts/config.** @viktorpopp
+scripts/debug.** @viktorpopp
 scripts/generate_isrs.sh @viktorpopp
 scripts/run.sh @viktorpopp
-scripts/toolchain.* @viktorpopp
+scripts/toolchain.** @viktorpopp
 
 
 # The Douck
