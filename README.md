@@ -1,7 +1,7 @@
 # InfinityOS
 
 >[!IMPORTANT]
->InfinityOS is still in very early development and is currently not ready for normal usage.
+>InfinityOS is still in very early development, is being developed on and off, and is currently not ready for normal usage.
 
 InfinityOS is a lightweight easy to use operating made to limit e-waste.
 
@@ -19,7 +19,7 @@ InfinityOS is a lightweight easy to use operating made to limit e-waste.
 | scons      | Build system     |
 
 ## Installation
-Read the [installation guide](https://github.com/TheDouck/InfinityOS/blob/main/INSTALL.md)
+Read the [installation guide](https://github.com/infinityos-dev/InfinityOS/blob/main/INSTALL.md)
 
 ## Contributers
 <a href="https://github.com/Hexuro/InfinityOS/graphs/contributors">
