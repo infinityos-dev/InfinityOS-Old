@@ -21,10 +21,10 @@ chmod +x /tmp/toolchain.sh
 ```
 Arch-based:
 ```bash
-make toolchain
+scons toolchain
 ```
 4. Building the InfinityOS
 ```
-make
+scons
 ```
-Now you can use `bash ./scripts/run.sh`/`make run` to open the disk image in Qemu and use `bash ./scripts/debug.sh` to debug the disk image on bochs.
+Now you can use `bash ./scripts/run.sh`/`scons run` to open the disk image in Qemu and use `bash ./scripts/debug.sh` to debug the disk image on bochs.

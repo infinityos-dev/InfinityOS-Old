@@ -20,12 +20,5 @@
         "memory.h": "c",
         "i8259.h": "c",
         "io.h": "c"
-    },
-    "makefile.launchConfigurations": [
-        {
-            "cwd": "/home/viktorpopp/InfinityOS/build",
-            "binaryArgs": []
-        }
-    ],
-    "makefile.makefilePath": "${workspaceFolder}/Makefile"
+    }
 }
