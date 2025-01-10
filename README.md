@@ -1,7 +1,7 @@
 # InfinityOS
 
 >[!IMPORTANT]
->InfinityOS is still in very early development, is being developed on and off, and is currently not ready for normal usage.
+>This is the old repository and it is no more maintained. Please use [InfinitOS-dev/core](https://github.com/infinityos-dev/core) instead.
 
 InfinityOS is a lightweight easy to use operating made to limit e-waste.
 
